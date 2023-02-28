@@ -1,29 +1,29 @@
-const form = document.querySelector('#novoItem')
-
-form.addEventListener("submit", function(elemento){
-
-    elemento.preventDefault()  // Todo formulário por padrão tem que enviar os dados pra algum lugar, porém estou enviando pra minha prórpia página... entao tenho que tratar o erro que vai dar.
+// const form = document.querySelector('#novoItem')
+// 
+// form.addEventListener("submit", function(elemento){
+// 
+    // // elemento.preventDefault()  // Todo formulário por padrão tem que enviar os dados pra algum lugar, porém estou enviando pra minha prórpia página... entao tenho que tratar o erro que vai dar.
     // console.log(elemento)
     // console.log(elemento.target[0].value)    //pego o elemento no input 0 (Nome)
-    criaElemento(elemento.target.elements['nome'].value, elemento.target.elements['quantidade'].value) // pegando pela nomenclatura do elemento fica mais confiável
-    
-})
-
-function criaElemento (nome, quantidade){
-
-    const novoItem = document.createElement('li')
-    novoItem.classList.add("item")
-
-    const numeroItem = document.createElement('Strong')
-    numeroItem.innerHTML = quantidade
-
-    novoItem.appendChild (numeroItem)  // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
-
-    novoItem.innerHTML += nome
-
-
-    const lista = document.querySelector('#lista')
-    lista.appendChild(novoItem)
+    // criaElemento(elemento.target.elements['nome'].value, elemento.target.elements['quantidade'].value) // pegando pela nomenclatura do elemento fica mais confiável
+    // 
+// })
+// 
+// function criaElemento (nome, quantidade){
+// 
+    // const novoItem = document.createElement('li')
+    // novoItem.classList.add("item")
+// 
+    // const numeroItem = document.createElement('Strong')
+    // numeroItem.innerHTML = quantidade
+// 
+    // novoItem.appendChild (numeroItem)  // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
+// 
+    // novoItem.innerHTML += nome
+// 
+// 
+    // const lista = document.querySelector('#lista')
+    // lista.appendChild(novoItem)
 
 
     //  <ul class="lista" id="lista">
@@ -35,4 +35,27 @@ function criaElemento (nome, quantidade){
     // Após isso com criou-se uma nova classe que no caso é o item como um todo (lista)---Utilizou-se o 
     // append para jogar a li e o strong com o nome e quantidade dentro dela e foi isso.
 
-} 
+// } 
+
+
+const form = document.querySelector('#novoItem')
+
+form.addEventListener("submit", function(elemento){
+
+    elemento.preventDefault()
+
+    criaElemento(elemento.target.elements['nome'].value,elemento.target.elements['quantidade'].value)
+})
+
+
+
+
+
+function criaElemento(nome, quantidade){
+
+    const novoItem = document.createElement('li')
+    novoItem.classList.add("item")
+
+    const numeroItem = document.createElement('strong')
+    numeroItem.innerHTML = quantidade  
+}
