@@ -48,9 +48,6 @@ form.addEventListener("submit", function(elemento){
 })
 
 
-
-
-
 function criaElemento(nome, quantidade){
 
     const novoItem = document.createElement('li')
@@ -58,4 +55,11 @@ function criaElemento(nome, quantidade){
 
     const numeroItem = document.createElement('strong')
     numeroItem.innerHTML = quantidade  
+
+    novoItem.appendChild(numeroItem)
+    novoItem.innerHTML += nome
+
+    const lista = document.querySelector('#lista')
+    lista.appendChild(novoItem)
+    
 }
