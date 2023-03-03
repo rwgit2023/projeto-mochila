@@ -2,13 +2,8 @@ const form = document.querySelector('#novoItem')
 const itens = JSON.parse(localStorage.getItem("itens") || [])   // Transforma oque antes tinha sido transformado em objeto para enviar para o storage devolta 
 
 itens.forEach(function(elemento){
-    console.log(elemento.nome, elemento.quantidade)
+    criaElemento(elemento)
 })
-
-
-
-
-
 
 console.log(itens)
 
@@ -21,39 +16,38 @@ form.addEventListener("submit", function(elemento){
 
     const nome = elemento.target.elements['nome']
     const quantidade= elemento.target.elements['quantidade']
+
+    const itemAtual = {           // No JS toda vez que vai se usar um par de dados (nome, quantidade) temos que usar um ojeto
+        "nome": nome.value,
+        "quantidade": quantidade.value
+    }
     
-    criaElemento(nome.value, quantidade.value) // pegando pela nomenclatura do elemento fica mais confiável
+    criaElemento(itemAtual) // pegando pela nomenclatura do elemento fica mais confiável
+
+    itens.push(itemAtual)  // jogar os itens dentro do array (lista)
+    localStorage.setItem("itens",JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
 
     nome.value = ""
     quantidade.value = ""
 })
 
 
-function criaElemento(nome, quantidade){
+function criaElemento(itemAtual){
 
     const novoItem = document.createElement('li')
     novoItem.classList.add("item")
 
     const numeroItem = document.createElement('strong')
-    numeroItem.innerHTML = quantidade  
-
+    numeroItem.innerHTML = itemAtual.quantidade  
     novoItem.appendChild(numeroItem)    // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
-    novoItem.innerHTML += nome
+    
+    novoItem.innerHTML += itemAtual.nome
 
     const lista = document.querySelector('#lista')
     lista.appendChild(novoItem)
 
     localStorage.setItem("nome",nome)
     localStorage.setItem("quantidade",quantidade)  // joga os dados dentro do localStorage no navegador
-
-    const itemAtual = {           // No JS toda vez que vai se usar um par de dados (nome, quantidade) temos que usar um ojeto
-        "nome": nome,
-        "quantidade": quantidade
-    }
-
-    itens.push(itemAtual)  // jogar os itens dentro do array (lista)
-
-    localStorage.setItem("itens",JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
 
     // ****************ARRAY DE STRINGS****************
 
