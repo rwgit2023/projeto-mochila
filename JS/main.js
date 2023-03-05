@@ -21,7 +21,8 @@ form.addEventListener("submit", function(elemento){
         "nome": nome.value,
         "quantidade": quantidade.value
     }
-    
+
+  
     criaElemento(itemAtual) // pegando pela nomenclatura do elemento fica mais confiável
 
     itens.push(itemAtual)  // jogar os itens dentro do array (lista)
