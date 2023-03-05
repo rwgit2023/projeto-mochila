@@ -1,11 +1,11 @@
 const form = document.querySelector('#novoItem')
+const lista = document.getElementById("lista")
 const itens = JSON.parse(localStorage.getItem("itens") || [])   // Transforma oque antes tinha sido transformado em objeto para enviar para o storage devolta 
 
 itens.forEach(function(elemento){
     criaElemento(elemento)
 })
 
-console.log(itens)
 
 form.addEventListener("submit", function(elemento){
 
@@ -32,22 +32,18 @@ form.addEventListener("submit", function(elemento){
 })
 
 
-function criaElemento(itemAtual){
+function criaElemento(item){
 
     const novoItem = document.createElement('li')
     novoItem.classList.add("item")
 
     const numeroItem = document.createElement('strong')
-    numeroItem.innerHTML = itemAtual.quantidade  
+    numeroItem.innerHTML = item.quantidade  
     novoItem.appendChild(numeroItem)    // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
     
-    novoItem.innerHTML += itemAtual.nome
+    novoItem.innerHTML += item.nome
 
-    const lista = document.querySelector('#lista')
     lista.appendChild(novoItem)
-
-    localStorage.setItem("nome",nome)
-    localStorage.setItem("quantidade",quantidade)  // joga os dados dentro do localStorage no navegador
 
     // ****************ARRAY DE STRINGS****************
 

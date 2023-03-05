@@ -95,9 +95,24 @@ html {
 }
 
 .cadastrar {
-    background-color: #40112D;
+    background-color: #114013;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.apagar {
+    background-color: #3d2634;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.apagar input {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0.5em 0 1em;
+    padding: 1em 0.5em;
+    border-radius: 10px;
+    border: 2px solid #240919;
 }
 
 .lista {
