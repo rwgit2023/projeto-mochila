@@ -1,6 +1,6 @@
 const form = document.querySelector('#novoItem')
 const lista = document.getElementById("lista")
-const itens = JSON.parse(localStorage.getItem("itens") || [])   // Transforma oque antes tinha sido transformado em objeto para enviar para o storage devolta 
+const itens = JSON.parse(localStorage.getItem("itens")) || []  // Transforma oque antes tinha sido transformado em objeto para enviar para o storage devolta 
 
 itens.forEach(function(elemento){
     criaElemento(elemento)
@@ -26,7 +26,7 @@ form.addEventListener("submit", function(elemento){
     criaElemento(itemAtual) // pegando pela nomenclatura do elemento fica mais confiável
 
     itens.push(itemAtual)  // jogar os itens dentro do array (lista)
-    localStorage.setItem("itens",JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
+    localStorage.setItem("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
 
     nome.value = ""
     quantidade.value = ""
@@ -59,3 +59,8 @@ function criaElemento(item){
 }
 
 
+// form.addEventListener("reset", function(elemento){
+// 
+    // elemento.preventDefault() 
+    // localStorage.clear()
+// })
