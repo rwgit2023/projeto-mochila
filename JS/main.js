@@ -18,10 +18,35 @@ form.addEventListener("submit", function(elemento){
     const nome = elemento.target.elements['nome']
     const quantidade= elemento.target.elements['quantidade']
 
+    
+    const existe = itens.find(elemento => elemento.nome === nome.value)
+
     const itemAtual = {           // No JS toda vez que vai se usar um par de dados (nome, quantidade) temos que usar um ojeto
         "nome": nome.value,
         "quantidade": quantidade.value
     }
+    
+    
+     if (existe){                           // Estou colocando um ID para o existe (para ele ir para cada item)
+        itemAtual.id = existe.id
+        console.log(existe.id)
+    
+    }else{
+        itemAtual.id = itens.length         //Recebe a quantidade pelo numero de itens que tem na lista
+
+        criaElemento(itemAtual)
+        itens.push(itemAtual)
+    }
+    
+    
+
+   
+    
+
+    
+    
+    
+    
 
   
     criaElemento(itemAtual) // pegando pela nomenclatura do elemento fica mais confiável
@@ -41,6 +66,7 @@ function criaElemento(item){
 
     const numeroItem = document.createElement('strong')
     numeroItem.innerHTML = item.quantidade  
+    novoItem.dataset.id = item.id   //Pega o item vindo do criar (Seta o id vindo do item)
     novoItem.appendChild(numeroItem)    // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
     
     novoItem.innerHTML += item.nome
@@ -61,9 +87,10 @@ function criaElemento(item){
 
 
 // form.addEventListener("reset", function(elemento){
+// 
+    // elemento.preventDefault() 
+    // localStorage.clear()
+    // lista.remove(itens)
 
-//     elemento.preventDefault() 
-//     localStorage.clear()
-//     lista.remove(itens)
-
+// 
 // })
