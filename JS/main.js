@@ -2,6 +2,7 @@ const form = document.querySelector('#novoItem')
 const lista = document.getElementById("lista")
 const itens = JSON.parse(localStorage.getItem("itens")) || []  // Transforma oque antes tinha sido transformado em objeto para enviar para o storage devolta 
 
+
 itens.forEach(function(elemento){
     criaElemento(elemento)
 })
@@ -60,7 +61,9 @@ function criaElemento(item){
 
 
 // form.addEventListener("reset", function(elemento){
-// 
-    // elemento.preventDefault() 
-    // localStorage.clear()
+
+//     elemento.preventDefault() 
+//     localStorage.clear()
+//     lista.remove(itens)
+
 // })

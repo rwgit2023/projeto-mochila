@@ -107,8 +107,29 @@ transparent), linear-gradient(to bottom, transparent 10px, transparent 15px, #49
     cursor: pointer;
 }
 
+.cadastrar:hover{
+    
+    transition: 1s all;
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: green;
+    font-size: 16px;
+}
+
+
+
 .deletar {
     width: 100%;
+}
+
+
+.deletar:hover{
+    
+    transition: 1s all;
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: rgb(87, 15, 15);
+    font-size: 16px;
 }
 
 .deletar input {
