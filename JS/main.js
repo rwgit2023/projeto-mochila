@@ -29,7 +29,7 @@ form.addEventListener("submit", function(elemento){
     
      if (existe){                           // Estou colocando um ID para o existe (para ele ir para cada item)
         itemAtual.id = existe.id
-        console.log(existe.id)
+        atualizaElemento(numeroItem.value)
     
     }else{
         itemAtual.id = itens.length         //Recebe a quantidade pelo numero de itens que tem na lista
@@ -39,19 +39,6 @@ form.addEventListener("submit", function(elemento){
     }
     
     
-
-   
-    
-
-    
-    
-    
-    
-
-  
-    criaElemento(itemAtual) // pegando pela nomenclatura do elemento fica mais confiável
-
-    itens.push(itemAtual)  // jogar os itens dentro do array (lista)
     localStorage.setItem("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
 
     nome.value = ""
@@ -66,7 +53,7 @@ function criaElemento(item){
 
     const numeroItem = document.createElement('strong')
     numeroItem.innerHTML = item.quantidade  
-    novoItem.dataset.id = item.id   //Pega o item vindo do criar (Seta o id vindo do item)
+    numeroItem.dataset.id = item.id   //Pega o item vindo do criar (Seta o id vindo do item)
     novoItem.appendChild(numeroItem)    // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
     
     novoItem.innerHTML += item.nome
@@ -84,6 +71,12 @@ function criaElemento(item){
     // append para jogar a li e o strong com o nome e quantidade dentro dela e foi isso.
     
 }
+
+
+function atualizaElemento (item){
+    // console.log(document.querySelector("[data-id='"+item.id+"']"))
+    console.log(document.querySelector("[data-id= '"+item.id+"']"))
+} 
 
 
 // form.addEventListener("reset", function(elemento){
