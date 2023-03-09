@@ -48,6 +48,7 @@ form.addEventListener("submit", function(elemento){
 })
 
 
+
 function criaElemento(item){
 
     const novoItem = document.createElement('li')
@@ -59,6 +60,8 @@ function criaElemento(item){
     novoItem.appendChild(numeroItem)    // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
     
     novoItem.innerHTML += item.nome
+
+    novoItem.appendChild(botaoDeleta())
 
     lista.appendChild(novoItem)
 
@@ -81,16 +84,12 @@ function atualizaElemento (item){
 } 
 
 
-// form.addEventListener("reset", function(elemento){
-// 
-    // elemento.preventDefault() 
-    // localStorage.clear()
-    // lista.remove(itens)
+function botaoDeleta() {
+    const elementoBotao = document.createElement("button")             // Função para criar um x de exit acima dos itens 
+    elementoBotao.innerText = "X"
 
-// 
-// })
-
-
+    return elementoBotao
+}
 
 
 
