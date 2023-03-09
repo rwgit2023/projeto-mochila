@@ -19,7 +19,7 @@ form.addEventListener("submit", function(elemento){
     const quantidade= elemento.target.elements['quantidade']
 
     
-    const existe = itens.find(elemento => elemento.nome === nome.value)
+    const existe = itens.find(elemento => elemento.nome === nome.value)   // Busca dentro do array se o item buscado ja existe
 
     const itemAtual = {           // No JS toda vez que vai se usar um par de dados (nome, quantidade) temos que usar um ojeto
         "nome": nome.value,
@@ -29,7 +29,9 @@ form.addEventListener("submit", function(elemento){
     
      if (existe){                           // Estou colocando um ID para o existe (para ele ir para cada item)
         itemAtual.id = existe.id
-        atualizaElemento(numeroItem.value)
+        atualizaElemento(itemAtual)
+
+        itens[existe.id] = itemAtual
     
     }else{
         itemAtual.id = itens.length         //Recebe a quantidade pelo numero de itens que tem na lista
@@ -75,7 +77,7 @@ function criaElemento(item){
 
 function atualizaElemento (item){
     // console.log(document.querySelector("[data-id='"+item.id+"']"))
-    console.log(document.querySelector("[data-id= '"+item.id+"']"))
+    document.querySelector("[data-id= '"+item.id+"']").innerHTML = item.quantidade
 } 
 
 
@@ -87,3 +89,9 @@ function atualizaElemento (item){
 
 // 
 // })
+
+
+
+
+
+// https://www.alura.com.br/artigos/entenda-diferenca-entre-var-let-e-const-no-javascript?gclid=Cj0KCQiApL2QBhC8ARIsAGMm-KEr2-dj03os9u3elTSjRFtl_e2ePc7-v9snbcsYkQsFYfYYGLaa54kaAuluEALw_wcB
