@@ -88,9 +88,18 @@ function botaoDeleta() {
     const elementoBotao = document.createElement("button")             // Função para criar um x de exit acima dos itens 
     elementoBotao.innerText = "X"
 
+    elementoBotao.addEventListener("click", function(){
+        // console.log(this)
+        deletaElemento(this.parentNode)     //this.parentNode é para pegar o pai do elemento (li)
+
+    })
     return elementoBotao
 }
 
+function deletaElemento(tag){
+    tag.remove()
+    localStorage.clear("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que 
+}
 
 
 // https://www.alura.com.br/artigos/entenda-diferenca-entre-var-let-e-const-no-javascript?gclid=Cj0KCQiApL2QBhC8ARIsAGMm-KEr2-dj03os9u3elTSjRFtl_e2ePc7-v9snbcsYkQsFYfYYGLaa54kaAuluEALw_wcB
