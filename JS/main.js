@@ -31,10 +31,15 @@ form.addEventListener("submit", function(elemento){
         itemAtual.id = existe.id
         atualizaElemento(itemAtual)
 
-        itens[existe.id] = itemAtual
+        
+        itens[itens.findindex(elemento => elemento.id ===existe.id)] = itemAtual
     
+        
     }else{
-        itemAtual.id = itens.length         //Recebe a quantidade pelo numero de itens que tem na lista
+
+        itemAtual.id= itens(itens.length -1) ? (itens(itens.length-1)).id +1 : 0
+        
+               //Recebe a quantidade pelo numero de itens que tem na lista
 
         criaElemento(itemAtual)
         itens.push(itemAtual)
@@ -61,7 +66,7 @@ function criaElemento(item){
     
     novoItem.innerHTML += item.nome
 
-    novoItem.appendChild(botaoDeleta())
+    novoItem.appendChild(botaoDeleta(item.id))
 
     lista.appendChild(novoItem)
 
@@ -84,22 +89,29 @@ function atualizaElemento (item){
 } 
 
 
-function botaoDeleta() {
+function botaoDeleta(id) {
     const elementoBotao = document.createElement("button")             // Função para criar um x de exit acima dos itens 
     elementoBotao.innerText = "X"
 
     elementoBotao.addEventListener("click", function(){
         // console.log(this)
-        deletaElemento(this.parentNode)     //this.parentNode é para pegar o pai do elemento (li)
+        deletaElemento(this.parentNode,id)     //this.parentNode é para pegar o pai do elemento (li)
 
     })
     return elementoBotao
 }
 
-function deletaElemento(tag){
+function deletaElemento(tag,id){
     tag.remove()
-    localStorage.clear("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que 
+
+    //1 passo - remover um item do array
+    //2 escrever isso no localStorage
+    itens.splice(itens.findIndex(function(elemento){
+        elemento.id === id
+
+    },1))
+
+    localStorage.setItem("itens", JSON.stringify(itens)) 
 }
 
 
-// https://www.alura.com.br/artigos/entenda-diferenca-entre-var-let-e-const-no-javascript?gclid=Cj0KCQiApL2QBhC8ARIsAGMm-KEr2-dj03os9u3elTSjRFtl_e2ePc7-v9snbcsYkQsFYfYYGLaa54kaAuluEALw_wcB
