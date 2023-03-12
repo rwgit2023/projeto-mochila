@@ -37,7 +37,7 @@ form.addEventListener("submit", function(elemento){
         
     }else{
 
-        itemAtual.id= itens(itens.length -1) ? (itens(itens.length-1)).id +1 : 0
+        itemAtual.id = itens(itens.length -1) ? (itens(itens.length-1)).id +1 : 0;   // operador ternário
         
                //Recebe a quantidade pelo numero de itens que tem na lista
 
@@ -46,7 +46,7 @@ form.addEventListener("submit", function(elemento){
     }
     
     
-    localStorage.setItem("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
+    localstorage.setItem("item", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
 
     nome.value = ""
     quantidade.value = ""
@@ -111,7 +111,7 @@ function deletaElemento(tag,id){
 
     },1))
 
-    localStorage.setItem("itens", JSON.stringify(itens)) 
+    localstorage.setItem("item", JSON.stringify(itens))
 }
 
 
