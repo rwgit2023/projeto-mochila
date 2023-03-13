@@ -29,10 +29,11 @@ form.addEventListener("submit", function(elemento){
     
      if (existe){                           // Estou colocando um ID para o existe (para ele ir para cada item)
         itemAtual.id = existe.id
+        
         atualizaElemento(itemAtual)
 
         
-        itens[itens.findindex(elemento => elemento.id ===existe.id)] = itemAtual
+        itens[itens.findindex(elemento => elemento.id === existe.id)] = itemAtual
     
         
     }else{
@@ -46,7 +47,7 @@ form.addEventListener("submit", function(elemento){
     }
     
     
-    localstorage.setItem("item", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
+    localstorage.setItem("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
 
     nome.value = ""
     quantidade.value = ""
@@ -85,7 +86,7 @@ function criaElemento(item){
 
 function atualizaElemento (item){
     // console.log(document.querySelector("[data-id='"+item.id+"']"))
-    document.querySelector("[data-id= '"+item.id+"']").innerHTML = item.quantidade
+    document.querySelector("[data-id='"+item.id+"']").innerHTML = item.quantidade
 } 
 
 
@@ -101,17 +102,18 @@ function botaoDeleta(id) {
     return elementoBotao
 }
 
-function deletaElemento(tag,id){
+function deletaElemento(tag, id){
     tag.remove()
 
     //1 passo - remover um item do array
     //2 escrever isso no localStorage
-    itens.splice(itens.findIndex(function(elemento){
-        elemento.id === id
+    // itens.splice(itens.findIndex(function(elemento){
+        // elemento.id === id
 
-    },1))
+    // },1))
+    itens.splice(itens.findIndex(elemento=> elemento.id === id),1)
 
-    localstorage.setItem("item", JSON.stringify(itens))
+    localStorage.setItem("itens", JSON.stringify(itens))
 }
 
 
