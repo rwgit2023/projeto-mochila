@@ -33,12 +33,11 @@ form.addEventListener("submit", function(elemento){
         atualizaElemento(itemAtual)
 
         
-        itens[itens.findindex(elemento => elemento.id === existe.id)] = itemAtual
+        itens[itens.findIndex(elemento => elemento.id === existe.id)] = itemAtual
     
         
-    }else{
-
-        itemAtual.id = itens(itens.length -1) ? (itens(itens.length-1)).id +1 : 0;   // operador ternário
+    }else {
+        itemAtual.id = itens[itens.length -1] ? (itens[itens.length-1]).id + 1 : 0;   // operador ternário
         
                //Recebe a quantidade pelo numero de itens que tem na lista
 
@@ -47,7 +46,7 @@ form.addEventListener("submit", function(elemento){
     }
     
     
-    localstorage.setItem("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
+    localStorage.setItem("itens", JSON.stringify(itens))  // O LOCALSTORAGE só aceita string e como era um objeto--- devemos transormar para que funcione
 
     nome.value = ""
     quantidade.value = ""
@@ -57,10 +56,10 @@ form.addEventListener("submit", function(elemento){
 
 function criaElemento(item){
 
-    const novoItem = document.createElement('li')
+    const novoItem = document.createElement("li")
     novoItem.classList.add("item")
 
-    const numeroItem = document.createElement('strong')
+    const numeroItem = document.createElement("strong")
     numeroItem.innerHTML = item.quantidade  
     numeroItem.dataset.id = item.id   //Pega o item vindo do criar (Seta o id vindo do item)
     novoItem.appendChild(numeroItem)    // para colocar um objeto dentro do outro... no caso a classe strong dentro do novo item
