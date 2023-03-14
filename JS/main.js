@@ -68,7 +68,10 @@ function criaElemento(item){
 
     novoItem.appendChild(botaoDeleta(item.id))
 
+    
+
     lista.appendChild(novoItem)
+    
 
     // ****************ARRAY DE STRINGS****************
 
@@ -96,10 +99,22 @@ function botaoDeleta(id) {
     elementoBotao.addEventListener("click", function(){
         // console.log(this)
         deletaElemento(this.parentNode,id)     //this.parentNode é para pegar o pai do elemento (li)
+        
 
     })
     return elementoBotao
 }
+
+form.addEventListener("reset", function(elemento){
+    elemento.preventDefault()
+
+
+    deletaTudo(elemento) 
+
+})
+
+
+
 
 function deletaElemento(tag, id){
     tag.remove()
@@ -115,4 +130,15 @@ function deletaElemento(tag, id){
     localStorage.setItem("itens", JSON.stringify(itens))
 }
 
+
+
+
+function deletaTudo(){
+
+    tag.remove()
+
+    itens.splice(itens)
+
+    localStorage.setItem("itens", JSON.stringify(itens))
+}
 
